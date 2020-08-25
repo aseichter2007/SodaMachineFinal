@@ -15,7 +15,7 @@ namespace SodaMachine
             Console.WriteLine(prompt);
             return Console.ReadLine();
         }
-        public double WhatsInMyWallet(Wallet wallet)
+        public static double WhatsInMyWallet(Wallet wallet)
         {
             int quarters = 0;
             int dimes = 0;

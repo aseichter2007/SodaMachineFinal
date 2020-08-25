@@ -16,7 +16,16 @@ namespace SodaMachine
         }
         public void Run()
         {
+            UserInterface.Hello();
+            bool exit = false;
+            do
+            {
+                int[] payCoins = new int[4];
+                UserInterface.WhatsInMyWallet()
+                UserInterface
 
+
+            } while (!exit);
         }
 
     }
