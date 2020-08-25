@@ -4,7 +4,12 @@ using System.Text;
 
 namespace SodaMachine
 {
-    class UserInterface
+    static class UserInterface
     {
+        public static void Hello()
+        {
+            Console.WriteLine("");
+        }
+
     }
 }

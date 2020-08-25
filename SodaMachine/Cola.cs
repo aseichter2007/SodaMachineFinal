@@ -4,7 +4,12 @@ using System.Text;
 
 namespace SodaMachine
 {
-    class Cola
+    class Cola : Can
     {
+        public Cola()
+        {
+            this.name = "cola";
+            this.cost = 0.35;
+        }
     }
 }

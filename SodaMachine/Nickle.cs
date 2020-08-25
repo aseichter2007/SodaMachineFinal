@@ -4,7 +4,12 @@ using System.Text;
 
 namespace SodaMachine
 {
-    class Nickle
+    class Nickle : Coin
     {
+        public Nickle()
+        {
+            this.name = "nickle";
+            this.value = 0.05;
+        }
     }
 }
