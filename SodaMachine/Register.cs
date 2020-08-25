@@ -11,14 +11,15 @@ namespace SodaMachine
 
         public Register()
         {
-            register = new List<Coin>;
-            inventory = new List<Can>;
-            InitSodaMachine();
+            register = new List<Coin>();
+            inventory = new List<Can>();
+            InitSodaMachine(20, 10, 20, 50, 15, 15, 15);
         }
-        private void InitSodaMachine()
+        private void InitSodaMachine(int quarters, int dimes, int nickels, int pennies, int cola, int rootbeer, int orange)
         {
-            InitRegister(20, 10, 20, 50);
-            InitInventory(15, 15, 15);
+            InitRegister(quarters, dimes, nickels, pennies);
+            InitInventory(cola, rootbeer, orange);
+
         }
         private void InitRegister(int quarters, int dimes, int nickels, int pennies)
         {

@@ -10,6 +10,10 @@ namespace SodaMachine
         {
             Console.WriteLine("");
         }
-
+        public static string PromptFor(string prompt)
+        {
+            Console.WriteLine(prompt);
+            return Console.ReadLine();
+        }
     }
 }

@@ -9,4 +9,5 @@ namespace SodaMachine
         public SodaMachine sodaMachine;
         public Customer customer;
     }
+
 }
