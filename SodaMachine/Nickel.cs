@@ -4,9 +4,9 @@ using System.Text;
 
 namespace SodaMachine
 {
-    class Nickle : Coin
+    class Nickel : Coin
     {
-        public Nickle()
+        public Nickel()
         {
             this.name = "nickle";
             this.value = 0.05;

@@ -8,7 +8,7 @@ namespace SodaMachine
     {
         public Cola()
         {
-            this.name = "cola";
+            this.name = "Cola";
             this.cost = 0.35;
         }
     }
