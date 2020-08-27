@@ -14,6 +14,28 @@ namespace SodaMachine
             wallet = new Wallet();
             backpack = new Backpack();
         }
+        public void TakeCan(Can can)
+        {
+            backpack.cans.Add(can);
+        }
+        public void TakeChange(List<Coin> change)
+        {
+            foreach (Coin coin in change)
+            {
+                wallet.coins.Add(coin);
+            }
+        }
+        public List<Coin> InsertCoins(int[] coins)
+        {
+            if (PayForSoda(coins[0],coins[1],coins[2],coins[3]))
+            {
+                return GetCoinsList(coins);
+            }
+            else
+            {
+                return null;
+            }
+        }
         public bool PayForSoda(int quarters, int dimes, int nickels, int pennies)
         {
             int[] change = CountChange();
@@ -52,6 +74,7 @@ namespace SodaMachine
         }
         public void PayChange(int quarters, int dimes, int nickels, int pennies)
         {
+            List<Coin> RemoveCoins = new List<Coin>();
             int[] paid = new int[4] { 0, 0, 0, 0 };
             foreach (Coin coin in wallet.coins)
             {
@@ -60,7 +83,7 @@ namespace SodaMachine
                     if (paid[0] < quarters)
                     {
                         paid[0]++;
-                        wallet.coins.Remove(coin);
+                        RemoveCoins.Add(coin);
                     }
                 }
                 else if (coin.name == "dime")
@@ -68,7 +91,7 @@ namespace SodaMachine
                     if (paid[1] < dimes)
                     {
                         paid[1]++;
-                        wallet.coins.Remove(coin);
+                        RemoveCoins.Add(coin);
                     }
                 }
                 else if (coin.name == "nickel")
@@ -76,7 +99,7 @@ namespace SodaMachine
                     if (paid[2] < nickels)
                     {
                         paid[2]++;
-                        wallet.coins.Remove(coin);
+                        RemoveCoins.Add(coin);
                     }
                 }
                 else if (coin.name == "penny")
@@ -84,18 +107,28 @@ namespace SodaMachine
                     if (paid[3] < pennies)
                     {
                         paid[3]++;
-                        wallet.coins.Remove(coin);
+                        RemoveCoins.Add(coin);
                     }
                 }
             }
+            foreach (Coin coin in RemoveCoins)
+            {
+                wallet.coins.Remove(coin);
+            }
         }
-        private int[] CountChange()
+        public int[] CountChange()
         {
+            //Quarter quarter = new Quarter();
+            //Dime dime = new Dime();
+            //Nickel nickel = new Nickel();
+            //Penny penny = new Penny();
+
             int[] change = new int[4] { 0, 0, 0, 0 };
             foreach (Coin coin in wallet.coins)
             {
                 switch (coin.name)
                 {
+                    //case quarter.name://why cant I set this?
                     case "quarter":
                         change[0]++;
                         break;
@@ -109,11 +142,42 @@ namespace SodaMachine
                         change[3]++;
                         break;
                     default:
-                        Console.WriteLine("there was an error counting coins, please contact the developer of this application");
+                        Console.WriteLine("there was an error counting coins, please contact the developer of this application : CountChange()");
                         break;
                 }
             }
             return change;
+        }
+        public List<Coin> GetCoinsList(int[] coinSelection)
+        {
+            List<Coin> output = new List<Coin>();
+            for (int i = 0; i < coinSelection.Length; i++)
+            {
+                for (int j = 0; j < coinSelection[i]; j++)
+                {
+                    Coin coin;
+                    switch (i)
+                    {
+                        case 0:
+                            coin = new Quarter();
+                            output.Add(coin);
+                            break;
+                        case 1:
+                            coin = new Dime();
+                            output.Add(coin);
+                            break;
+                        case 2:
+                            coin = new Nickel();
+                            output.Add(coin);
+                            break;
+                        case 3:
+                            coin = new Penny();
+                            output.Add(coin);
+                            break;
+                    }
+                }
+            }
+            return output;
         }
 
     }

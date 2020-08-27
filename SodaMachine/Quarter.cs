@@ -8,7 +8,7 @@ namespace SodaMachine
     {
         public Quarter()
         {
-            this.name = "quatrter";
+            this.name = "quarter";
             this.value = 0.25;
         }
     }

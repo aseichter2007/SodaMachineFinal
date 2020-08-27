@@ -8,7 +8,7 @@ namespace SodaMachine
     {
         public Nickel()
         {
-            this.name = "nickle";
+            this.name = "nickel";
             this.value = 0.05;
         }
     }
