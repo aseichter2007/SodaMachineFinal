@@ -111,7 +111,7 @@ namespace SodaMachine
             else if (payment > cost)
             {
                 AddToRegister(quarters, dimes, nickels, pennies);
-                Can can = Dispense(soda);
+                Can can = InventoryCheck(soda);
                 if (can != null)
                 {
                     return MakeChange(payment - cost);
@@ -178,8 +178,10 @@ namespace SodaMachine
                     change -= nickle.Value;
                     changeReturned[2]++;
                 }
-                else if (change>penny.Value && RegisterContainsCoin(penny.name))
+                else if (change > penny.Value && RegisterContainsCoin(penny.name))
                 {
+                //else if (change>penny.Value && RegisterContainsCoin(penny.name))  
+                //why are we always using doubles for money? Decimals are for money.
                     success = RemoveCoinFromRegister(penny.name);
                     change -= penny.Value;
                     changeReturned[3]++;
@@ -188,7 +190,7 @@ namespace SodaMachine
                 {
                     success = false;
                 }
-            } while (change > 0 && success == true);
+            } while (change > 0.00999999999999999999 && success == true);
             if (success)
             {
             return changeReturned;
@@ -268,6 +270,17 @@ namespace SodaMachine
                 if (can.name == soda)
                 {
                     inventory.Remove(can);
+                    return can;
+                }
+            }
+            return null;
+        }
+        public Can InventoryCheck(string soda)
+        {
+            foreach (Can can in inventory)
+            {
+                if (can.name == soda)
+                {
                     return can;
                 }
             }

@@ -56,6 +56,9 @@ namespace SodaMachine
 
             }
             Console.WriteLine($"You have {quarters} quarters, {dimes} dimes, {nickels} nickels, and {pennies} pennies, totalling {value.ToString("c")}  in your wallet.");
+            Console.WriteLine("press any key to continue.");
+            Console.ReadKey();
+
             return value;
         }
         public static bool ValidInputBinary(string input)
@@ -171,6 +174,14 @@ namespace SodaMachine
         {
             Console.WriteLine($"You put {coins[0]} quarters, {coins[1]} dimes, {coins[2]} nickels, and {coins[3]} pennies. Into the soda machine. \n");
 
+        }
+        public static void ReturnCoins(List<Coin> coins)
+        {
+            Console.WriteLine($"The SodaMachine spits out:");
+            foreach (Coin coin in coins)
+            {
+                Console.WriteLine(coin.name);
+            }
         }
     }
 }

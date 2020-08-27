@@ -13,7 +13,7 @@ namespace SodaMachine
         {
             coins = new List<Coin>();
             card = new Card();
-            InitWallet(9, 14, 14, 23);
+            InitWallet(10, 15, 15, 20);
         }
         private void InitWallet(int quarters, int dimes, int nickels, int pennies)
         {
