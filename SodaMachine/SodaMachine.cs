@@ -190,7 +190,7 @@ namespace SodaMachine
                 {
                     success = false;
                 }
-            } while (change > 0.00999999999999999999 && success == true);
+            } while (change >= 1 && success == true);
             if (success)
             {
             return changeReturned;
